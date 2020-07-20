@@ -27,7 +27,7 @@ void RouteModel::CreateNodeToRoadHashmap() {
 
 
 RouteModel::Node *RouteModel::Node::FindNeighbor(std::vector<int> node_indices) {
-    //std::cout << "Enter FindNeighbor\n";
+
     Node *closest_node = nullptr;
     Node node;
 
@@ -39,21 +39,21 @@ RouteModel::Node *RouteModel::Node::FindNeighbor(std::vector<int> node_indices) 
             }
         }
     }
-    //std::cout << "Exit FindNeighbor\n";
+    
     return closest_node;
 }
 
 
 void RouteModel::Node::FindNeighbors() {
-    //std::cout << "Enter FindNeighbors\n";
+    
     for (auto & road : parent_model->node_to_road[this->index]) {
-        //std::cout << "Enter FindNeighbors loop\n";
+        
         RouteModel::Node *new_neighbor = this->FindNeighbor(parent_model->Ways()[road->way].nodes);
         if (new_neighbor) {
             this->neighbors.emplace_back(new_neighbor);
         }
     }
-    //std::cout << "Exit FindNeighbors\n";
+    
 }
 
 
